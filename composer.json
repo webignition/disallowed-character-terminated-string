@@ -1,0 +1,14 @@
+{
+    "name": "webignition/disallowed-character-terminated-string",
+    "description": "A string terminated by one or more disallowed characters",
+    "keywords": ["string", "terminated"],
+    "homepage": "https://github.com/webignition/disallowed-character-terminated-string",
+    "type": "library",
+    "license": "WTFPL",
+    "authors": [
+        {
+            "name": "Jon Cram",
+            "email": "jon@webignition.net"
+        }
+    ]
+}

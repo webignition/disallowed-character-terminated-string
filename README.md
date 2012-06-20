@@ -25,7 +25,6 @@ If used as a dependency by another project, update that project's composer.json
 and update your dependencies.
 
     "require": {
-        "php": ">=5.3.0",
         "webignition/disallowed-character-terminated-string": "*"      
     },
     "repositories": [
