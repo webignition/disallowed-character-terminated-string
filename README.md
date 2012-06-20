@@ -38,5 +38,6 @@ Testing
 -------
 
 PHPUnit unit test are included:
+
     cd ~/disallowed-character-terminated-string
     phpunit tests
