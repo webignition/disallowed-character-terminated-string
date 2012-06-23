@@ -10,6 +10,18 @@ disallowed characters.
 Useful when stripping out end-of-line comments or when discarding whatever follows
 a line return.
 
+Example Usage
+---------------
+
+```php
+<?php
+$string = new \webignition\DisallowedCharacterTerminatedString\DisallowedCharacterTerminatedString();
+$string->addDisallowedCharacterCode(ord('#'));
+
+$string->set('value #comment');
+$this->assertEquals('value ', $string->get());
+?>
+
 Building
 --------
 
