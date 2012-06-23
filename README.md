@@ -1,5 +1,5 @@
-Disallowed Character Terminated String
-======================================
+Disallowed Character Terminated String [![Build Status](https://secure.travis-ci.org/webignition/disallowed-character-terminated-string.png?branch=master)](http://travis-ci.org/webignition/disallowed-character-terminated-string)
+====================================
 
 Overview
 ---------
@@ -53,3 +53,16 @@ PHPUnit unit test are included:
 
     cd ~/disallowed-character-terminated-string
     phpunit tests
+
+
+Testing
+-------
+
+Have look at the [project on travis][4] for the latest build status, or give the tests
+a go yourself.
+
+    cd ~/disallowed-character-terminated-string
+    phpunit tests
+
+
+[4]: http://travis-ci.org/webignition/disallowed-character-terminated-string/builds
