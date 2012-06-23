@@ -21,6 +21,7 @@ $string->addDisallowedCharacterCode(ord('#'));
 $string->set('value #comment');
 $this->assertEquals('value ', $string->get());
 ?>
+```
 
 Building
 --------
