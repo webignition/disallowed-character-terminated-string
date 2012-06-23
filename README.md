@@ -50,15 +50,6 @@ and update your dependencies.
 Testing
 -------
 
-PHPUnit unit test are included:
-
-    cd ~/disallowed-character-terminated-string
-    phpunit tests
-
-
-Testing
--------
-
 Have look at the [project on travis][4] for the latest build status, or give the tests
 a go yourself.
 
