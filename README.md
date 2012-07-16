@@ -54,7 +54,7 @@ Have look at the [project on travis][4] for the latest build status, or give the
 a go yourself.
 
     cd ~/disallowed-character-terminated-string
-    phpunit tests
+    phpunit
 
 
 [4]: http://travis-ci.org/webignition/disallowed-character-terminated-string/builds
