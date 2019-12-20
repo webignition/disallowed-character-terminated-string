@@ -33,5 +33,4 @@ class DisallowedCharacterTerminatedStringTest extends \PHPUnit\Framework\TestCas
         $string->set('value #comment');
         $this->assertEquals('value ', $string->get());
     }
-
 }
