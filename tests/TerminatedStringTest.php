@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace webignition\DisallowedCharacterTerminatedString\Tests;
 
-use webignition\DisallowedCharacterTerminatedString\DisallowedCharacterTerminatedString;
+use webignition\DisallowedCharacterTerminatedString\TerminatedString;
 
-class DisallowedCharacterTerminatedStringTest extends \PHPUnit\Framework\TestCase
+class TerminatedStringTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @dataProvider createDataProvider
@@ -17,7 +17,7 @@ class DisallowedCharacterTerminatedStringTest extends \PHPUnit\Framework\TestCas
      */
     public function testCreate(string $value, array $terminatingCharacters, string $expectedString)
     {
-        $terminatedString = new DisallowedCharacterTerminatedString($value, $terminatingCharacters);
+        $terminatedString = new TerminatedString($value, $terminatingCharacters);
 
         $this->assertSame($expectedString, (string) $terminatedString);
     }
@@ -63,14 +63,14 @@ class DisallowedCharacterTerminatedStringTest extends \PHPUnit\Framework\TestCas
 
     public function testCastingToString()
     {
-        $string = new DisallowedCharacterTerminatedString('input value');
+        $string = new TerminatedString('input value');
 
         $this->assertEquals('input value', (string)$string);
     }
 
     public function testStringIsTerminatedByDisallowedCharacter()
     {
-        $string = new DisallowedCharacterTerminatedString(
+        $string = new TerminatedString(
             'will-be-terminated-by-first-space and-should-not-include-this',
             [
                 ' ',
@@ -82,7 +82,7 @@ class DisallowedCharacterTerminatedStringTest extends \PHPUnit\Framework\TestCas
 
     public function testIgnoreEndOfLineComment()
     {
-        $string = new DisallowedCharacterTerminatedString('value #comment', [
+        $string = new TerminatedString('value #comment', [
             '#',
         ]);
 
