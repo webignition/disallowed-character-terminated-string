@@ -1,10 +1,13 @@
 language: php
 php:
-  - 5.3
-  - 5.4
-  
-before_script:
-  - wget http://getcomposer.org/composer.phar
-  - php composer.phar install
-  
-script: phpunit tests
+  - "7.2"
+
+install:
+  - composer install --prefer-dist
+
+script:
+  - composer ci
+
+cache:
+  directories:
+    - $HOME/.composer/cache/files
