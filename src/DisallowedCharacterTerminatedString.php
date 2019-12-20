@@ -12,7 +12,7 @@ class DisallowedCharacterTerminatedString
     /**
      * Collection of characters not allowed
      *
-     * @var array
+     * @var int[]
      */
     private $disallowedValueCharacterCodes = [];
 
