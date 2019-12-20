@@ -9,23 +9,23 @@ namespace webignition\DisallowedCharacterTerminatedString;
  */
 class DisallowedCharacterTerminatedString
 {
-    private $disallowedValueCharacterCodes = [];
+    private $terminationMarkers = [];
     private $value = '';
 
     /**
      * @param string $value
-     * @param int[] $disallowedValueCharacterCodes
+     * @param string[] $terminationMarkers
      */
-    public function __construct(string $value, array $disallowedValueCharacterCodes = [])
+    public function __construct(string $value, array $terminationMarkers = [])
     {
-        $this->disallowedValueCharacterCodes = $disallowedValueCharacterCodes;
+        $this->terminationMarkers = $terminationMarkers;
         $this->value = $this->filter($value);
     }
 
     public function reset(): void
     {
         $this->value = '';
-        $this->disallowedValueCharacterCodes = array();
+        $this->terminationMarkers = array();
     }
 
     public function get(): string
@@ -41,17 +41,21 @@ class DisallowedCharacterTerminatedString
     private function filter(string $value): string
     {
         $filteredValue = '';
-        $valueCharacters = str_split(trim((string)$value));
+        $characters = preg_split('//u', $value, -1, PREG_SPLIT_NO_EMPTY);
+
+        if (false === $characters || [] === $characters) {
+            return '';
+        }
 
         $hasTerminated = false;
 
-        foreach ($valueCharacters as $valueCharacter) {
-            if (in_array(ord($valueCharacter), $this->disallowedValueCharacterCodes)) {
+        foreach ($characters as $character) {
+            if (in_array($character, $this->terminationMarkers)) {
                 $hasTerminated = true;
             }
 
             if (false === $hasTerminated) {
-                $filteredValue .= $valueCharacter;
+                $filteredValue .= $character;
             }
         }
 
