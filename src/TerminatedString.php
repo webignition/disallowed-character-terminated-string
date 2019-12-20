@@ -7,7 +7,7 @@ namespace webignition\DisallowedCharacterTerminatedString;
 /**
  * A string terminated by the presence of a disallowed character
  */
-class DisallowedCharacterTerminatedString
+class TerminatedString
 {
     private $terminationMarkers = [];
     private $value = '';
