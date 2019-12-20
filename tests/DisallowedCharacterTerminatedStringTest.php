@@ -10,27 +10,29 @@ class DisallowedCharacterTerminatedStringTest extends \PHPUnit\Framework\TestCas
 {
     public function testCastingToString()
     {
-        $string = new DisallowedCharacterTerminatedString();
+        $string = new DisallowedCharacterTerminatedString('input value');
 
-        $string->set('input value');
         $this->assertEquals('input value', (string)$string);
     }
 
     public function testStringIsTerminatedByDisallowedCharacter()
     {
-        $string = new DisallowedCharacterTerminatedString();
-        $string->addDisallowedCharacterCode(ord(' '));
+        $string = new DisallowedCharacterTerminatedString(
+            'will-be-terminated-by-first-space and-should-not-include-this',
+            [
+                ord(' '),
+            ]
+        );
 
-        $string->set('will-be-terminated-by-first-space and-should-not-include-this');
         $this->assertEquals('will-be-terminated-by-first-space', $string->get());
     }
 
     public function testIgnoreEndOfLineComment()
     {
-        $string = new DisallowedCharacterTerminatedString();
-        $string->addDisallowedCharacterCode(ord('#'));
+        $string = new DisallowedCharacterTerminatedString('value #comment', [
+            ord('#'),
+        ]);
 
-        $string->set('value #comment');
         $this->assertEquals('value ', $string->get());
     }
 }
