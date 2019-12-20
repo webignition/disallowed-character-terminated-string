@@ -21,7 +21,6 @@ use webignition\DisallowedCharacterTerminatedString\TerminatedString;
 $string = new TerminatedString('value #comment', ['#']);
 
 $this->assertEquals('value ', $string->get());
-?>
 ```
 
 Installation and Updating
