@@ -26,8 +26,10 @@ $this->assertEquals('value ', $string->get());
 Installation and Updating
 -------------------------
 
-`composser require webignition/disallowed-character-terminated-string`
-`composser update webignition/disallowed-character-terminated-string`
+```
+composer require webignition/disallowed-character-terminated-string
+composer update webignition/disallowed-character-terminated-string
+```
 
 Testing
 -------
