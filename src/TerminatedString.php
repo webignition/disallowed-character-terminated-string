@@ -22,12 +22,6 @@ class TerminatedString
         $this->value = $this->filter($value);
     }
 
-    public function reset(): void
-    {
-        $this->value = '';
-        $this->terminationMarkers = array();
-    }
-
     public function get(): string
     {
         return $this->value;
