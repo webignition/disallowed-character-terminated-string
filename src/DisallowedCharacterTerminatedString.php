@@ -7,8 +7,8 @@ namespace webignition\DisallowedCharacterTerminatedString;
 /**
  * A string terminated by the presence of a disallowed character
  */
-class DisallowedCharacterTerminatedString {
-
+class DisallowedCharacterTerminatedString
+{
     /**
      * Collection of characters not allowed
      *
