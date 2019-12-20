@@ -9,23 +9,17 @@ namespace webignition\DisallowedCharacterTerminatedString;
  */
 class DisallowedCharacterTerminatedString
 {
-    /**
-     * Collection of characters not allowed
-     *
-     * @var int[]
-     */
     private $disallowedValueCharacterCodes = [];
-
-    /**
-     * @var string
-     */
     private $value = '';
 
-    public function addDisallowedCharacterCode(int $characterCode): void
+    /**
+     * @param string $value
+     * @param int[] $disallowedValueCharacterCodes
+     */
+    public function __construct(string $value, array $disallowedValueCharacterCodes = [])
     {
-        if (!in_array($characterCode, $this->disallowedValueCharacterCodes)) {
-            $this->disallowedValueCharacterCodes[] = $characterCode;
-        }
+        $this->disallowedValueCharacterCodes = $disallowedValueCharacterCodes;
+        $this->value = $this->filter($value);
     }
 
     public function reset(): void
@@ -39,22 +33,28 @@ class DisallowedCharacterTerminatedString
         return $this->value;
     }
 
-    public function set(string $value): void
+    public function __toString(): string
     {
+        return $this->value;
+    }
+
+    private function filter(string $value): string
+    {
+        $filteredValue = '';
         $valueCharacters = str_split(trim((string)$value));
-        $this->value = '';
+
+        $hasTerminated = false;
 
         foreach ($valueCharacters as $valueCharacter) {
             if (in_array(ord($valueCharacter), $this->disallowedValueCharacterCodes)) {
-                return;
+                $hasTerminated = true;
             }
 
-            $this->value .= $valueCharacter;
+            if (false === $hasTerminated) {
+                $filteredValue .= $valueCharacter;
+            }
         }
-    }
 
-    public function __toString(): string
-    {
-        return $this->get();
+        return $filteredValue;
     }
 }
